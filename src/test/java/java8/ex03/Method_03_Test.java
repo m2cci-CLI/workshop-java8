@@ -5,12 +5,11 @@ import java8.data.Person;
 import org.junit.Test;
 
 import java.util.List;
-
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.*;
 import static org.junit.Assert.*;
 
 /**
- * Exercice 03 - Méthode statique
+ * Exercice 03 - MÃ©thode statique
  */
 public class Method_03_Test {
 
@@ -18,8 +17,13 @@ public class Method_03_Test {
     interface IDao {
         List<Person> findAll();
 
-        // TODO créer une méthode statique IDao getDefaultInstance()
-        // TODO cette méthode retourne une instance de la classe DaoA
+        // TODO crÃ©er une mÃ©thode statique IDao getDefaultInstance()
+        // TODO cette mÃ©thode retourne une instance de la classe DaoA
+        
+      static   IDao getDefaultInstance(){
+    	
+    	  return  new Method_03_Test().new DaoA() ;
+      }
     }
     // end::IDao[]
 
@@ -36,8 +40,8 @@ public class Method_03_Test {
 
     @Test
     public void test_getDefaultInstance() throws Exception {
-        // TODO invoquer la méthode getDefaultInstance() pour que le test soit passant
-        IDao result = null;
+        // TODO invoquer la mÃ©thode getDefaultInstance() pour que le test soit passant
+        IDao result = IDao.getDefaultInstance();
 
         assertThat(result.findAll(), hasSize(20));
     }
